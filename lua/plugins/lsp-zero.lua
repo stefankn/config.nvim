@@ -18,6 +18,9 @@ return {
 
             local cmp = require("cmp")
             cmp.setup({
+                completion = {
+                    completeopt = "menu,menuone,noinsert",
+                },
                 mapping = cmp.mapping.preset.insert({
                     ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 })
