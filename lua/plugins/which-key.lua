@@ -10,7 +10,8 @@ return {
             local wk = require("which-key")
             wk.setup()
             wk.register({
-                ["<leader>w"] = { name = "window management" },
+                ["<leader>w"] = { name = "windows" },
+                ["<leader>b"] = { name = "buffers" },
                 ["<leader>f"] = { name = "find" },
                 ["<leader>c"] = { name = "code" },
                 ["<leader>g"] = { name = "git" },

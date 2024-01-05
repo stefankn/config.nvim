@@ -27,6 +27,8 @@ return {
             vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "list git commits" })
             vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "git status" })
             vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "list git branches" })
+
+            vim.keymap.set("n", "<leader>bl", builtin.buffers, { desc = "list buffers" })
         end
     }
 }

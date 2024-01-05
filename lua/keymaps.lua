@@ -1,5 +1,6 @@
 local keymap = vim.keymap
 vim.g.mapleader = " "
+vim.g.localmapleader = ","
 
 -- Window management
 keymap.set("n", "<leader>wv", "<C-w>v", { desc = "split window vertically" })
@@ -11,3 +12,6 @@ keymap.set("n", "<leader>wl", "<C-w>l", { desc = "move to right window" })
 keymap.set("n", "<leader>wj", "<C-w>j", { desc = "move to bottom window" })
 keymap.set("n", "<leader>wh", "<C-w>h", { desc = "move to left window" })
 keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", { desc = "maximize active window" })
+
+-- Buffers
+keymap.set("n", "<leader>bp", ":b#<CR>", { desc = "previous buffer" })
