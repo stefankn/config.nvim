@@ -14,4 +14,5 @@ keymap.set("n", "<leader>wh", "<C-w>h", { desc = "move to left window" })
 keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", { desc = "maximize active window" })
 
 -- Buffers
-keymap.set("n", "<leader>bp", ":b#<CR>", { desc = "previous buffer" })
+keymap.set("n", "<leader>bp", ":bprev<CR>", { desc = "previous buffer" })
+keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "next buffer" })
