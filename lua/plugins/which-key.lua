@@ -16,6 +16,7 @@ return {
                 ["<leader>c"] = { name = "code" },
                 ["<leader>g"] = { name = "git" },
                 ["<leader>a"] = { name = "ai" },
+                ["<leader>s"] = { name = "selection" },
             })
         end
     }
