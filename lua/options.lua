@@ -9,6 +9,9 @@ vim.opt.relativenumber = true
 
 -- hide command bar when inactive
 vim.opt.cmdheight = 0
+vim.opt.shortmess = {
+    o = true,
+}
 
 -- default locations with splitting views
 vim.opt.splitbelow = true
