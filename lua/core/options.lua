@@ -13,6 +13,7 @@ vim.g.have_nerd_font = true
 
 -- Enabled line numbers by default
 vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Don't show the mode, is already visible in the status line
 vim.opt.showmode = false
