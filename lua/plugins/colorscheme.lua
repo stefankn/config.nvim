@@ -1,11 +1,19 @@
 return {
 	{
-		--		"rose-pine/neovim",
-		"sainnhe/everforest",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("everforest")
+			require("catppuccin").setup({
+				flavour = "mocha",
+				transparent_background = true,
+				float = {
+					transparent = true,
+					solid = false,
+				},
+			})
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }
