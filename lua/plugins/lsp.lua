@@ -5,7 +5,7 @@ return {
 		-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
 		{ "williamboman/mason.nvim", opts = {} },
 		{
-			"williamboman/mason-lspconfig.nvim",
+			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_enable = true } },
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		-- Useful status updates for LSP
@@ -75,6 +75,21 @@ return {
 					},
 				},
 			},
+			basedpyright = {
+				settings = {
+					basedpyright = {
+						analysis = {
+							diagnosticMode = "openFilesOnly",
+							typeCheckingMode = "standard",
+							useLibraryCodeForTypes = true,
+							diagnosticSeverityOverrides = {
+								reportCallIssue = "none",
+								reportArgumentType = "none",
+							},
+						},
+					},
+				},
+			},
 			dockerls = {},
 			docker_compose_language_service = {},
 		}
@@ -99,17 +114,8 @@ return {
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-		require("mason-lspconfig").setup({
-			ensure_installed = {}, -- Populated by mason-tool-installer
-			automatic_installation = false,
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
-		})
+		for server_name, config in pairs(servers) do
+			vim.lsp.config(server_name, config)
+		end
 	end,
 }
