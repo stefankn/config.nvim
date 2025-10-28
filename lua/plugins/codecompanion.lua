@@ -7,25 +7,34 @@ return {
 	config = function()
 		require("codecompanion").setup({
 			adapters = {
-				ollama = function()
-					return require("codecompanion.adapters").extend("ollama", {
-						schema = {
-							model = {
-								default = "gemma3:12b",
+				http = {
+					ollama = function()
+						return require("codecompanion.adapters").extend("ollama", {
+							schema = {
+								model = {
+									default = "gpt-oss:latest",
+								},
 							},
-						},
-					})
-				end,
+						})
+					end,
+					anthropic = function()
+						return require("codecompanion.adapters").extend("anthropic", {
+							env = {
+								api_key = "cmd:op read op://personal/Claude/credential --no-newline",
+							},
+						})
+					end,
+				},
 			},
 			strategies = {
 				chat = {
-					adapter = "ollama",
+					adapter = "anthropic",
 				},
 				inline = {
-					adapter = "ollama",
+					adapter = "anthropic",
 				},
 				agent = {
-					adapter = "ollama",
+					adapter = "anthropic",
 				},
 			},
 		})
