@@ -14,6 +14,7 @@ return {
 					{ "<leader>c", group = "code" },
 					{ "<leader>d", group = "diagnostics" },
 					{ "<leader>s", group = "search" },
+					{ "<leader>t", group = "tasks" },
 					{ "<leader>w", group = "windows" },
 				},
 			})

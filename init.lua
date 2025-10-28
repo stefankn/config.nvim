@@ -54,4 +54,6 @@ require("lazy").setup({
 	require("plugins/render-markdown"),
 	-- C# LSP interaction
 	require("plugins/roslyn"),
+	-- Task management
+	require("plugins/overseer"),
 })
