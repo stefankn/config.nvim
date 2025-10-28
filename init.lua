@@ -50,4 +50,6 @@ require("lazy").setup({
 	require("plugins/autopairs"),
 	-- Terminal
 	require("plugins/toggleterm"),
+	-- C# LSP interaction
+	require("plugins/roslyn"),
 })

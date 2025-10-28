@@ -77,23 +77,6 @@ return {
 			},
 			dockerls = {},
 			docker_compose_language_service = {},
-			omnisharp = {},
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							pyflakes = { enabled = false },
-							pycodestyle = { enabled = false },
-							autopep8 = { enabled = false },
-							yapf = { enabled = false },
-							mccabe = { enabled = false },
-							pylsp_mypy = { enabled = false },
-							pylsp_black = { enabled = false },
-							pylsp_isort = { enabled = false },
-						},
-					},
-				},
-			},
 		}
 
 		vim.filetype.add({
@@ -106,6 +89,13 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
+		})
+
+		require("mason").setup({
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:Crashdummyy/mason-registry", -- Includes Roslyn for C#
+			},
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
