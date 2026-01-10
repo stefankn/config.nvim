@@ -69,4 +69,4 @@ vim.opt.scrolloff = 10
 -- Raise alert dialog when performing an operation that fails
 vim.opt.confirm = true
 
-vim.o.cmdheight = 2
+vim.o.cmdheight = 0

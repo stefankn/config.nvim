@@ -6,3 +6,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- Show LSP clients attached to the buffer
+vim.api.nvim_create_user_command("LspClient", function()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #clients == 0 then
+		print("No LSP clients attached to this buffer")
+	else
+		for _, client in ipairs(clients) do
+			print(string.format("Client: %s (id: %d)", client.name, client.id))
+		end
+	end
+end, {})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "OverseerTaskStart",
+	callback = function()
+		vim.cmd("OverseerOpen")
+	end,
+})

@@ -3,6 +3,8 @@ vim.lsp.enable({
 	"basedpyright",
 	"docker-file",
 	"docker-compose",
+	"yamlls",
+	"taplo",
 })
 
 vim.filetype.add({

@@ -15,6 +15,15 @@ return {
 				},
 			},
 			adapters = {
+				acp = {
+					claude_code = function()
+						return require("codecompanion.adapters").extend("claude_code", {
+							env = {
+								CLAUDE_CODE_OAUTH_TOKEN = "cmd:op read op://personal/Claude/claude_code_oauth_token --no-newline",
+							},
+						})
+					end,
+				},
 				http = {
 					ollama = function()
 						return require("codecompanion.adapters").extend("ollama", {
@@ -36,13 +45,13 @@ return {
 			},
 			strategies = {
 				chat = {
-					adapter = "anthropic",
+					adapter = "claude_code",
 				},
 				inline = {
-					adapter = "anthropic",
+					adapter = "claude_code",
 				},
 				agent = {
-					adapter = "anthropic",
+					adapter = "claude_code",
 				},
 			},
 		})
