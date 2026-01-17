@@ -18,10 +18,3 @@ vim.api.nvim_create_user_command("LspClient", function()
 		end
 	end
 end, {})
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "OverseerTaskStart",
-	callback = function()
-		vim.cmd("OverseerOpen")
-	end,
-})

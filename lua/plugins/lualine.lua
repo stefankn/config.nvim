@@ -30,6 +30,10 @@ return {
 			cond = hide_in_width,
 		}
 
+		local overseer = {
+			"overseer",
+		}
+
 		local diff = {
 			"diff",
 			colored = false,
@@ -55,6 +59,7 @@ return {
 				lualine_x = {
 					diagnostics,
 					diff,
+					overseer,
 					{ "encoding", cond = hide_in_width },
 					{ "filetype", cond = hide_in_width },
 				},
@@ -74,4 +79,3 @@ return {
 		})
 	end,
 }
-
