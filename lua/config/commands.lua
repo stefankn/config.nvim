@@ -7,6 +7,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Automatically switch to terminal when a terminal buffer becomes active
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		if vim.bo.buftype == "terminal" then
+			vim.cmd("startinsert")
+		end
+	end,
+})
+
 -- Show LSP clients attached to the buffer
 vim.api.nvim_create_user_command("LspClient", function()
 	local clients = vim.lsp.get_clients({ bufnr = 0 })

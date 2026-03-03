@@ -5,6 +5,9 @@ vim.lsp.enable({
 	"docker-compose",
 	"yamlls",
 	"taplo",
+	"gopls",
+	"clangd",
+	"rust-analyzer",
 })
 
 vim.filetype.add({
