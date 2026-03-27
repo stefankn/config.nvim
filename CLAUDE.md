@@ -11,13 +11,18 @@ This is a Neovim configuration using Lazy.nvim as the plugin manager. All config
 **Loading order** (defined in `init.lua`):
 1. `config.options` - Vim options
 2. `core.lazy` - Plugin manager bootstrap and plugin loading
-3. `core.lsp` - LSP client enablement and diagnostic configuration
+3. `core.lsp` - LSP client enablement, diagnostic configuration, and LspAttach keybindings
 4. `config.keymaps` - Global keybindings
-5. `config.autocmds` - Autocommands
+5. `config.commands` - Autocommands and user commands
 
 **Plugin system**: Lazy.nvim auto-discovers plugins from `lua/plugins/`. Each file returns a plugin spec table. No manual registration needed.
 
-**LSP configuration**: Uses Neovim's native `vim.lsp.enable()` with server configs in `lsp/*.lua`. Each file returns a config table with `cmd`, `filetypes`, `root_markers`, and `settings`. Mason handles server installation.
+**LSP configuration**: Uses Neovim's native `vim.lsp.enable()` with server configs in `lsp/*.lua`. Each file returns a config table with `cmd`, `filetypes`, `root_markers`, and `settings`. Mason handles server installation. The `core.lsp` module also configures:
+- Custom diagnostic signs and styling
+- LspAttach autocmd that sets up buffer-local keybindings when an LSP client attaches
+- Custom filetypes (e.g., Razor for C# web development)
+
+**Current LSP servers**: lua_ls, basedpyright, docker-file, docker-compose, html, yamlls, taplo, gopls, clangd, rust-analyzer, roslyn
 
 **Task runner**: Overseer templates in `lua/overseer/template/` for .NET development tasks.
 
@@ -30,4 +35,8 @@ This is a Neovim configuration using Lazy.nvim as the plugin manager. All config
 2. Add server name to `vim.lsp.enable()` in `lua/core/lsp.lua`
 3. Add to Mason installer in `lua/plugins/mason.lua` if needed
 
-**New keybinding**: Add to `lua/config/keymaps.lua` for global mappings, or in plugin config for plugin-specific mappings.
+**New keybinding**: Add to `lua/config/keymaps.lua` for global mappings, in plugin config for plugin-specific mappings, or in the LspAttach autocmd in `lua/core/lsp.lua` for LSP-specific mappings.
+
+**New user command**: Add to `lua/config/commands.lua` using `vim.api.nvim_create_user_command()`.
+
+**New filetype**: Add to the `vim.filetype.add()` call in `lua/core/lsp.lua`.
