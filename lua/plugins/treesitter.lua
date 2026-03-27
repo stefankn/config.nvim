@@ -1,3 +1,5 @@
+-- Install tree-sitter-cli with `brew install tree-sitter-cli`
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",

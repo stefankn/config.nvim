@@ -30,10 +30,6 @@ return {
 			cond = hide_in_width,
 		}
 
-		local easydotnet = {
-			require("easy-dotnet.ui-modules.jobs").lualine,
-		}
-
 		local diff = {
 			"diff",
 			colored = false,
@@ -59,7 +55,6 @@ return {
 				lualine_x = {
 					diagnostics,
 					diff,
-					easydotnet,
 					{ "encoding", cond = hide_in_width },
 					{ "filetype", cond = hide_in_width },
 				},

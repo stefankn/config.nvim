@@ -3,17 +3,23 @@ vim.lsp.enable({
 	"basedpyright",
 	"docker-file",
 	"docker-compose",
+	"html",
 	"yamlls",
 	"taplo",
 	"gopls",
 	"clangd",
 	"rust-analyzer",
+	"roslyn",
 })
 
 vim.filetype.add({
 	filename = {
 		["compose.yaml"] = "yaml.docker-compose",
 		["compose.yml"] = "yaml.docker-compose",
+	},
+	extension = {
+		razor = "razor",
+		cshtml = "razor",
 	},
 })
 
