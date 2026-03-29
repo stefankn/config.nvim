@@ -7,12 +7,17 @@ return {
 		"--stdio",
 		"--logLevel=Information",
 		"--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-		"--razorSourceGenerator=" .. vim.fs.joinpath(rzls_path, "Microsfto.CodeAnalysis.Razor.Compiler.dll"),
+		"--razorSourceGenerator=" .. vim.fs.joinpath(rzls_path, "Microsoft.CodeAnalysis.Razor.Compiler.dll"),
 		"--razorDesignTimePath=" .. vim.fs.joinpath(rzls_path, "Targets", "Microsoft.NET.Sdk.Razor.DesignTime.targets"),
 		"--extension=" .. vim.fs.joinpath(rzls_path, "Microsoft.VisualStudioCode.RazorExtension.dll"),
 	},
 	filetypes = {
 		"cs",
 		"razor",
+	},
+	root_markers = {
+		"*.sln",
+		"*.csproj",
+		".git",
 	},
 }
