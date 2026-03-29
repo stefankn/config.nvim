@@ -13,6 +13,7 @@ return {
 					{ "<leader>b", group = "buffers" },
 					{ "<leader>c", group = "code" },
 					{ "<leader>d", group = "diagnostics" },
+					{ "<leader>g", group = "git" },
 					{ "<leader>p", group = "projects" },
 					{ "<leader>f", group = "find" },
 					{ "<leader>s", group = "select" },
