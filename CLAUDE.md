@@ -24,7 +24,9 @@ This is a Neovim configuration using Lazy.nvim as the plugin manager. All config
 
 **Current LSP servers**: lua_ls, basedpyright, docker-file, docker-compose, html, yamlls, taplo, gopls, clangd, rust-analyzer, roslyn
 
-**Task runner**: Overseer templates in `lua/overseer/template/` for .NET development tasks.
+**Formatting**: Conform.nvim handles code formatting with format-on-save enabled by default (500ms timeout, LSP fallback). Auto-format is explicitly disabled for C, C++, and Razor files due to performance or standardization concerns. Manual formatting available via `<leader>cf`.
+
+**C# Razor support**: Roslyn LSP is configured with Razor extension support, including source generator and design-time targets for full Blazor development experience.
 
 ## Adding New Components
 

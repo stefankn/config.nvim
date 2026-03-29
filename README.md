@@ -15,7 +15,8 @@ A modern, modular Neovim configuration written in Lua.
 - LSP support for Lua, Python (basedpyright), C# (Roslyn + Razor), Go, C/C++, Rust, HTML, YAML, TOML, and Dockerfile
 - Mason for automatic language server installation
 - Blink.cmp for fast completion with snippet support
-- Conform.nvim for format-on-save
+- Conform.nvim for format-on-save (disabled for C, C++, and Razor files)
+- Render-markdown for enhanced markdown display in markdown and AgenticChat buffers
 
 ### Navigation
 
@@ -30,7 +31,6 @@ A modern, modular Neovim configuration written in Lua.
 ### Productivity
 
 - Toggleterm for integrated terminal
-- Overseer for task running (custom .NET build/run templates)
 - Gitsigns for git integration
 - Treesitter for syntax highlighting
 
@@ -41,7 +41,6 @@ init.lua           → Entry point
 lua/core/          → Lazy.nvim & LSP setup (diagnostics, keybindings, filetypes)
 lua/config/        → Options, keymaps, commands
 lua/plugins/       → Plugin configurations
-lua/overseer/      → .NET task templates
 lsp/               → Language server configs
 ```
 
