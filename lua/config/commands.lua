@@ -27,3 +27,29 @@ vim.api.nvim_create_user_command("LspClient", function()
 		end
 	end
 end, {})
+
+vim.api.nvim_create_user_command("DotnetBuild", function()
+	local overseer = require("overseer")
+	overseer.run_task({ name = "dotnet build", autostart = false }, function(task)
+		if task then
+			task:start()
+			overseer.open()
+			vim.cmd("stopinsert")
+		else
+			vim.notify("DotnetBuild not supported for filetype " .. vim.bo.filetype, vim.log.levels.ERROR)
+		end
+	end)
+end, {})
+
+vim.api.nvim_create_user_command("DotnetRun", function()
+	local overseer = require("overseer")
+	overseer.run_task({ name = "dotnet run", autostart = false }, function(task)
+		if task then
+			task:start()
+			overseer.open()
+			vim.cmd("stopinsert")
+		else
+			vim.notify("DotnetRun not supported for filetype " .. vim.bo.filetype, vim.log.levels.ERROR)
+		end
+	end)
+end, {})
