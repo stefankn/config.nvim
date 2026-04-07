@@ -1,7 +1,7 @@
 return {
 	"carlos-algms/agentic.nvim",
 	opts = {
-		provider = "claude-acp",
+		provider = "claude-agent-acp",
 		keymaps = {
 			widget = {
 				change_mode = {
