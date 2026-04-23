@@ -4,7 +4,7 @@ Personal Neovim configuration built on native `vim.pack` (Neovim's built-in pack
 
 ## Requirements
 
-- Neovim nightly (for `vim.pack` and `vim._core.ui2`)
+- Neovim >= 0.12
 - A [Nerd Font](https://www.nerdfonts.com/)
 - `make` (to build telescope-fzf-native)
 - `stylua` (Lua formatter, also installable via Mason)
