@@ -1,5 +1,6 @@
-require("config.options")
-require("core.lazy")
-require("core.lsp")
-require("config.keymaps")
-require("config.commands")
+-- New UI (ui2) opt-in
+require("vim._core.ui2").enable({})
+
+require("options")
+require("keymaps")
+require("lsp")

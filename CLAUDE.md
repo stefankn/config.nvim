@@ -2,43 +2,69 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Overview
 
-This is a Neovim configuration using Lazy.nvim as the plugin manager. All configuration is written in Lua.
+This is a Neovim configuration using **native `vim.pack`** (Neovim's built-in package manager) — not lazy.nvim or packer. The lock file is `nvim-pack-lock.json`.
 
 ## Architecture
 
-**Loading order** (defined in `init.lua`):
-1. `config.options` - Vim options
-2. `core.lazy` - Plugin manager bootstrap and plugin loading
-3. `core.lsp` - LSP client enablement, diagnostic configuration, and LspAttach keybindings
-4. `config.keymaps` - Global keybindings
-5. `config.commands` - Autocommands and user commands
+### Entry point
+`init.lua` opts into the new UI2, then requires three modules: `options`, `keymaps`, and `lsp` (all from `lua/`).
 
-**Plugin system**: Lazy.nvim auto-discovers plugins from `lua/plugins/`. Each file returns a plugin spec table. No manual registration needed.
+### Configuration layers
 
-**LSP configuration**: Uses Neovim's native `vim.lsp.enable()` with server configs in `lsp/*.lua`. Each file returns a config table with `cmd`, `filetypes`, `root_markers`, and `settings`. Mason handles server installation. The `core.lsp` module also configures:
-- Custom diagnostic signs and styling
-- LspAttach autocmd that sets up buffer-local keybindings when an LSP client attaches
-- Custom filetypes (e.g., Razor for C# web development)
+| Location | Purpose |
+|---|---|
+| `lua/options.lua` | Vim options (leader keys set here — must load before plugins) |
+| `lua/keymaps.lua` | Global keymaps (diagnostics, navigation, window management, buffers) |
+| `lua/lsp.lua` | LSP enablement, diagnostic config, and `LspAttach` keymaps |
+| `plugin/` | One file per plugin — each calls `vim.pack.add()` then configures the plugin |
+| `lsp/` | LSP server config tables, returned and loaded via `vim.lsp.enable()` |
+| `lua/overseer/template/user/` | Custom Overseer task templates (e.g., `dotnet_build.lua`, `dotnet_run.lua`) |
 
-**Current LSP servers**: lua_ls, basedpyright, docker-file, docker-compose, html, yamlls, taplo, gopls, clangd, rust-analyzer, roslyn
+### Plugin loading pattern
+Every file in `plugin/` is auto-sourced by Neovim. The pattern is:
+```lua
+vim.pack.add({ "https://github.com/author/plugin.nvim" })
+require("plugin").setup({ ... })
+-- keymaps defined here too
+```
+Plugins, their configuration, and their keymaps all live together in the same `plugin/*.lua` file.
 
-**Formatting**: Conform.nvim handles code formatting with format-on-save enabled by default (500ms timeout, LSP fallback). Auto-format is explicitly disabled for C, C++, and Razor files due to performance or standardization concerns. Manual formatting available via `<leader>cf`.
+### LSP pattern
+`lsp/*.lua` files return a config table (no `require`, no setup calls). They are registered with:
+```lua
+vim.lsp.enable({ "lua_ls", "clangd", "roslyn" })
+```
+in `lua/lsp.lua`. LSP navigation keymaps (go-to-definition, references, rename, etc.) are set up in the `LspAttach` autocmd in `lua/lsp.lua`, using Telescope for most pickers.
 
-**C# Razor support**: Roslyn LSP is configured with Razor extension support, including source generator and design-time targets for full Blazor development experience.
+### C# / Roslyn
+Roslyn LSP is installed via Mason using the `Crashdummyy/mason-registry` (included alongside the standard `mason-org/mason-registry`). Configuration is in `lsp/roslyn.lua` and `plugin/roslyn.lua`. The Razor extension path is derived from the Mason data directory.
 
-## Adding New Components
+## Leader keys
+- `<leader>` = `<Space>`
+- `<localleader>` = `\`
 
-**New plugin**: Create `lua/plugins/<name>.lua` returning a Lazy.nvim spec table.
+## Key keymaps by group
+- `<leader>a*` — AI (agentic.nvim): toggle chat `<C-a>`, diagnostics, sessions
+- `<leader>c*` — Code/LSP: definition, references, rename, code action, format (`<leader>cf`)
+- `<leader>f*` — Find (Telescope): files, grep, buffers, help, keymaps
+- `<leader>g*` — Git: `<leader>gg` opens Neogit
+- `<leader>t*` — Tasks (Overseer): toggle `<leader>tt`, dotnet build `<leader>tb`, dotnet run `<leader>tr`
+- `<leader>w*` — Windows: split, close, zen mode
+- `<leader>e` — Toggle file explorer (mini.files)
+- `<C-t>` — Toggle terminal (toggleterm)
 
-**New LSP server**:
-1. Create `lsp/<server-name>.lua` with config table
-2. Add server name to `vim.lsp.enable()` in `lua/core/lsp.lua`
-3. Add to Mason installer in `lua/plugins/mason.lua` if needed
+## Adding a new plugin
+Create a new file in `plugin/` that calls `vim.pack.add()` with the GitHub URL, then configures the plugin in the same file.
 
-**New keybinding**: Add to `lua/config/keymaps.lua` for global mappings, in plugin config for plugin-specific mappings, or in the LspAttach autocmd in `lua/core/lsp.lua` for LSP-specific mappings.
+## Adding a new LSP server
+1. Create `lsp/<server-name>.lua` returning a config table
+2. Add the server name to the `vim.lsp.enable({...})` call in `lua/lsp.lua`
+3. If the server needs to be installed via Mason, add it to `mason-tool-installer` in `plugin/mason.lua`
 
-**New user command**: Add to `lua/config/commands.lua` using `vim.api.nvim_create_user_command()`.
+## Adding an Overseer task
+Create a new file under `lua/overseer/template/user/` returning an overseer template table. Templates are auto-discovered by Overseer.
 
-**New filetype**: Add to the `vim.filetype.add()` call in `lua/core/lsp.lua`.
+## Formatting
+conform.nvim formats on save for most filetypes; disabled for `c`, `cpp`, and `razor`. Lua uses `stylua`. `<leader>cf` triggers manual format.

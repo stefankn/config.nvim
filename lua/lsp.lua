@@ -1,14 +1,6 @@
 vim.lsp.enable({
 	"lua_ls",
-	"basedpyright",
-	"docker-file",
-	"docker-compose",
-	"html",
-	"yamlls",
-	"taplo",
-	"gopls",
 	"clangd",
-	"rust-analyzer",
 	"roslyn",
 })
 
@@ -47,7 +39,6 @@ vim.diagnostic.config({
 	},
 })
 
--- This function runs when an LSP attaches to a particular buffer
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("nvim-config-lsp-attach", { clear = true }),
 	callback = function(event)
@@ -90,3 +81,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>ca", vim.lsp.buf.code_action, "code action", { "n", "x" })
 	end,
 })
+
+-- Show LSP clients attached to the buffer
+vim.api.nvim_create_user_command("LspClient", function()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #clients == 0 then
+		vim.print("No LSP clients attached to this buffer")
+	else
+		for _, client in ipairs(clients) do
+			vim.print(string.format("Client: %s (id: %d)", client.name, client.id))
+		end
+	end
+end, {})
