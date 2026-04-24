@@ -2,6 +2,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"clangd",
 	"roslyn",
+	"html",
 })
 
 vim.filetype.add({
