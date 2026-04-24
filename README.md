@@ -25,6 +25,7 @@ LSP servers are configured as return tables in `lsp/` and enabled via `vim.lsp.e
 | `lua_ls` | Lua |
 | `clangd` | C/C++ |
 | `roslyn` | C# / Razor |
+| `html` | HTML |
 
 Mason auto-installs: `lua-language-server`, `stylua`, `docker-compose-language-service`, `dockerfile-language-server`.
 

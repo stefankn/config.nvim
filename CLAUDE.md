@@ -9,7 +9,7 @@ This is a Neovim configuration using **native `vim.pack`** (Neovim's built-in pa
 ## Architecture
 
 ### Entry point
-`init.lua` opts into the new UI2, then requires three modules: `options`, `keymaps`, and `lsp` (all from `lua/`).
+`init.lua` opts into the new UI2, then requires four modules: `options`, `keymaps`, `commands`, and `lsp` (all from `lua/`).
 
 ### Configuration layers
 
@@ -17,6 +17,7 @@ This is a Neovim configuration using **native `vim.pack`** (Neovim's built-in pa
 |---|---|
 | `lua/options.lua` | Vim options (leader keys set here — must load before plugins) |
 | `lua/keymaps.lua` | Global keymaps (diagnostics, navigation, window management, buffers) |
+| `lua/commands.lua` | User commands and autocmds (e.g. `PackUpdate`, yank highlight) |
 | `lua/lsp.lua` | LSP enablement, diagnostic config, and `LspAttach` keymaps |
 | `plugin/` | One file per plugin — each calls `vim.pack.add()` then configures the plugin |
 | `lsp/` | LSP server config tables, returned and loaded via `vim.lsp.enable()` |
@@ -34,7 +35,7 @@ Plugins, their configuration, and their keymaps all live together in the same `p
 ### LSP pattern
 `lsp/*.lua` files return a config table (no `require`, no setup calls). They are registered with:
 ```lua
-vim.lsp.enable({ "lua_ls", "clangd", "roslyn" })
+vim.lsp.enable({ "lua_ls", "clangd", "roslyn", "html" })
 ```
 in `lua/lsp.lua`. LSP navigation keymaps (go-to-definition, references, rename, etc.) are set up in the `LspAttach` autocmd in `lua/lsp.lua`, using Telescope for most pickers.
 
