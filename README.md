@@ -75,6 +75,7 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 | [mini.files](https://github.com/nvim-mini/mini.files) | File explorer |
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets/quotes |
+| [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | Auto-close and rename HTML tags |
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting / parsing |
 | [overseer.nvim](https://github.com/stevearc/overseer.nvim) | Task runner |
 | [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | Rendered markdown in buffer |
