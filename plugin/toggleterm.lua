@@ -12,7 +12,7 @@ vim.pack.add({
 })
 
 require("toggleterm").setup({
-	open_mapping = [[<c-t>]],
+	open_mapping = [[<c-\>]],
 	insert_mappings = true,
 	direction = "horizontal",
 	auto_scroll = true,
