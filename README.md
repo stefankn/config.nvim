@@ -8,6 +8,7 @@ Personal Neovim configuration built on native `vim.pack` (Neovim's built-in pack
 - A [Nerd Font](https://www.nerdfonts.com/)
 - `make` (to build telescope-fzf-native)
 - `stylua` (Lua formatter, also installable via Mason)
+- `chafa` (terminal image renderer, used by the dashboard)
 
 ## Plugin management
 
@@ -80,6 +81,7 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 | [overseer.nvim](https://github.com/stevearc/overseer.nvim) | Task runner |
 | [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | Rendered markdown in buffer |
 | [roslyn.nvim](https://github.com/seblyng/roslyn.nvim) | C# LSP wrapper |
+| [snacks.nvim](https://github.com/folke/snacks.nvim) | Dashboard with random image |
 | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder |
 | [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | Highlight TODO/FIXME comments |
 | [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Terminal manager |
