@@ -9,6 +9,8 @@ Personal Neovim configuration built on native `vim.pack` (Neovim's built-in pack
 - `make` (to build telescope-fzf-native)
 - `stylua` (Lua formatter, also installable via Mason)
 - `chafa` (terminal image renderer, used by the dashboard)
+- Xcode (provides `sourcekit-lsp` for Swift)
+- For xcodebuild.nvim: `brew install xcp xcode-build-server xcbeautify pipx rg jq coreutils` and `pipx install pymobiledevice3`
 
 ## Plugin management
 
@@ -27,8 +29,11 @@ LSP servers are configured as return tables in `lsp/` and enabled via `vim.lsp.e
 | `clangd` | C/C++ |
 | `roslyn` | C# / Razor |
 | `html` | HTML |
+| `sourcekit` | Swift / Objective-C |
 
 Mason auto-installs: `lua-language-server`, `stylua`, `docker-compose-language-service`, `dockerfile-language-server`.
+
+`sourcekit-lsp` is bundled with Xcode — no separate install needed.
 
 Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lua`) in addition to the standard registry.
 
@@ -54,6 +59,12 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 | `<leader>tb` | `dotnet build` |
 | `<leader>tr` | `dotnet run` |
 | `<C-a>` | Toggle AI chat (agentic.nvim) |
+| `<leader>xx` | Xcodebuild picker |
+| `<leader>xb` | Build Xcode project |
+| `<leader>xr` | Build and run Xcode project |
+| `<leader>xt` | Run tests |
+| `<leader>xl` | Toggle Xcode logs |
+| `<leader>xd` | Select device |
 | `<leader>wv` | Split vertically |
 | `<leader>wh` | Split horizontally |
 | `<leader>wz` | Zen mode |
@@ -88,4 +99,5 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 | [vim-sleuth](https://github.com/tpope/vim-sleuth) | Auto-detect indentation |
 | [vim-surround](https://github.com/tpope/vim-surround) | Surround motions |
 | [which-key.nvim](https://github.com/folke/which-key.nvim) | Keymap hints |
+| [xcodebuild.nvim](https://github.com/wojciech-kulik/xcodebuild.nvim) | Xcode build/run/test integration |
 | [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) | Distraction-free writing |

@@ -35,12 +35,24 @@ Plugins, their configuration, and their keymaps all live together in the same `p
 ### LSP pattern
 `lsp/*.lua` files return a config table (no `require`, no setup calls). They are registered with:
 ```lua
-vim.lsp.enable({ "lua_ls", "clangd", "roslyn", "html" })
+vim.lsp.enable({ "lua_ls", "clangd", "roslyn", "html", "sourcekit" })
 ```
 in `lua/lsp.lua`. LSP navigation keymaps (go-to-definition, references, rename, etc.) are set up in the `LspAttach` autocmd in `lua/lsp.lua`, using Telescope for most pickers.
 
 ### C# / Roslyn
 Roslyn LSP is installed via Mason using the `Crashdummyy/mason-registry` (included alongside the standard `mason-org/mason-registry`). Configuration is in `lsp/roslyn.lua` and `plugin/roslyn.lua`. The Razor extension path is derived from the Mason data directory.
+
+### Swift / Xcode (sourcekit + xcodebuild.nvim)
+`lsp/sourcekit.lua` enables `sourcekit-lsp` for Swift, Objective-C, and Objective-C++. It requires Xcode to be installed (provides `sourcekit-lsp`).
+
+`plugin/xcodebuild.lua` integrates [xcodebuild.nvim](https://github.com/wojciech-kulik/xcodebuild.nvim) for building, running, and testing Xcode projects. It requires several external tools:
+
+```sh
+brew install xcp xcode-build-server xcbeautify pipx rg jq coreutils
+pipx install pymobiledevice3
+```
+
+Run `:XcodebuildSetup` once inside a project to configure it. Keymaps are under `<leader>x*`.
 
 ## Leader keys
 - `<leader>` = `<Space>`
@@ -52,6 +64,7 @@ Roslyn LSP is installed via Mason using the `Crashdummyy/mason-registry` (includ
 - `<leader>f*` — Find (Telescope): files, grep, buffers, help, keymaps
 - `<leader>g*` — Git: `<leader>gg` opens Neogit
 - `<leader>t*` — Tasks (Overseer): toggle `<leader>tt`, dotnet build `<leader>tb`, dotnet run `<leader>tr`
+- `<leader>x*` — Xcode (xcodebuild.nvim): build `<leader>xb`, run `<leader>xr`, test `<leader>xt`, picker `<leader>xx`
 - `<leader>w*` — Windows: split, close, zen mode
 - `<leader>e` — Toggle file explorer (mini.files)
 - `<C-t>` — Toggle terminal (toggleterm)
