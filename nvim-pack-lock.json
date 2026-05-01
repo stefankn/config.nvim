@@ -28,13 +28,13 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
-    "main": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
     "lualine.nvim": {
       "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "main": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "mason-tool-installer.nvim": {
       "rev": "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc",
@@ -51,6 +51,10 @@
     "neogit": {
       "rev": "e06745228600a585b88726fc9fba44a373c15a47",
       "src": "https://github.com/NeogitOrg/neogit"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim": {
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
@@ -133,6 +137,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "xcodebuild.nvim": {
+      "rev": "e6b57ce4855a41559e5ad402b9095d4ac4994e23",
+      "src": "https://github.com/wojciech-kulik/xcodebuild.nvim"
     },
     "zen-mode.nvim": {
       "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",

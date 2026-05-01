@@ -3,6 +3,7 @@ vim.lsp.enable({
 	"clangd",
 	"roslyn",
 	"html",
+	"sourcekit",
 })
 
 vim.filetype.add({

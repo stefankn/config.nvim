@@ -18,5 +18,6 @@ wk.add({
 		{ "<leader>s", group = "select" },
 		{ "<leader>t", group = "tasks" },
 		{ "<leader>w", group = "windows" },
+		{ "<leader>x", group = "xcodebuild" },
 	},
 })
