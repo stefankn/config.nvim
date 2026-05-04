@@ -1,14 +1,5 @@
 vim.pack.add({
-	"https://github.com/catppuccin/nvim",
+	{ src = "https://github.com/ember-theme/nvim", name = "ember-theme" },
 })
 
-require("catppuccin").setup({
-	flavour = "mocha",
-	transparent_background = true,
-	float = {
-		transparent = true,
-		solid = false,
-	},
-})
-
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("ember")
