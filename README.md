@@ -76,7 +76,7 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 |---|---|
 | [agentic.nvim](https://github.com/carlos-algms/agentic.nvim) | AI chat / code assistant |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Completion |
-| [catppuccin](https://github.com/catppuccin/nvim) | Colorscheme (Mocha) |
+| [ember-theme](https://github.com/ember-theme/nvim) | Colorscheme |
 | [conform.nvim](https://github.com/stevearc/conform.nvim) | Formatting (format on save) |
 | [diffview.nvim](https://github.com/sindrets/diffview.nvim) | Diff viewer (used by Neogit) |
 | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git gutter signs |
