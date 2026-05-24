@@ -4,6 +4,7 @@ vim.lsp.enable({
 	"roslyn",
 	"html",
 	"sourcekit",
+	"gopls",
 })
 
 vim.filetype.add({
