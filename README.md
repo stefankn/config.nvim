@@ -28,6 +28,7 @@ LSP servers are configured as return tables in `lsp/` and enabled via `vim.lsp.e
 |---|---|
 | `lua_ls` | Lua |
 | `clangd` | C/C++ |
+| `gopls` | Go |
 | `roslyn` | C# / Razor |
 | `html` | HTML |
 | `sourcekit` | Swift / Objective-C |
