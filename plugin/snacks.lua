@@ -22,4 +22,12 @@ require("snacks").setup({
 			{ section = "keys", pane = 2, padding = { 0, 2 } },
 		},
 	},
+	image = {
+		resolve = function(path, src)
+			local api = require("obsidian.api")
+			if api.path_is_note(path) then
+				return api.resolve_attachment_path(src)
+			end
+		end,
+	},
 })

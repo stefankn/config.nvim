@@ -15,6 +15,7 @@ wk.add({
 		{ "<leader>g", group = "git" },
 		{ "<leader>p", group = "projects" },
 		{ "<leader>f", group = "find" },
+		{ "<leader>o", group = "obsidian" },
 		{ "<leader>s", group = "select" },
 		{ "<leader>t", group = "tasks" },
 		{ "<leader>w", group = "windows" },
