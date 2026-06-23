@@ -5,6 +5,7 @@ vim.lsp.enable({
 	"html",
 	"sourcekit",
 	"gopls",
+	"zls",
 })
 
 vim.filetype.add({
