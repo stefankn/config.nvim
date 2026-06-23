@@ -17,7 +17,7 @@ This is a Neovim configuration using **native `vim.pack`** (Neovim's built-in pa
 |---|---|
 | `lua/options.lua` | Vim options (leader keys set here — must load before plugins) |
 | `lua/keymaps.lua` | Global keymaps (diagnostics, navigation, window management, buffers) |
-| `lua/commands.lua` | User commands and autocmds (e.g. `PackUpdate`, yank highlight) |
+| `lua/commands.lua` | User commands and autocmds (e.g. `PackUpdate`, `PackClean`, yank highlight) |
 | `lua/lsp.lua` | LSP enablement, diagnostic config, and `LspAttach` keymaps |
 | `plugin/` | One file per plugin — each calls `vim.pack.add()` then configures the plugin |
 | `lsp/` | LSP server config tables, returned and loaded via `vim.lsp.enable()` |
@@ -61,6 +61,7 @@ Run `:XcodebuildSetup` once inside a project to configure it. Keymaps are under 
 ## Key keymaps by group
 - `<leader>a*` — AI (agentic.nvim): toggle chat `<C-a>`, diagnostics, sessions
 - `<leader>c*` — Code/LSP: definition, references, rename, code action, format (`<leader>cf`)
+- `<leader>o*` — Obsidian: quick switch `<leader>oo`, daily note `<leader>od`, new note `<leader>on`, follow link `<leader>of`, backlinks `<leader>ob`, TOC `<leader>ot`
 - `<leader>f*` — Find (Telescope): files, grep, buffers, help, keymaps
 - `<leader>g*` — Git: `<leader>gg` opens Neogit
 - `<leader>t*` — Tasks (Overseer): toggle `<leader>tt`, dotnet build `<leader>tb`, dotnet run `<leader>tr`

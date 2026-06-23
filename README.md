@@ -17,7 +17,8 @@ Personal Neovim configuration built on native `vim.pack` (Neovim's built-in pack
 Plugins are declared with `vim.pack.add()` directly inside each `plugin/*.lua` file. Neovim auto-sources everything in `plugin/` on startup. The lock file is `nvim-pack-lock.json`.
 
 To update all plugins: `:PackUpdate`  
-To sync/install missing plugins: `:PackSync`
+To sync/install missing plugins: `:PackSync`  
+To remove unused plugins: `:PackClean`
 
 ## LSP
 
@@ -58,6 +59,12 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 | `<leader>tt` | Toggle Overseer task panel |
 | `<leader>tb` | `dotnet build` |
 | `<leader>tr` | `dotnet run` |
+| `<leader>oo` | Quick switch Obsidian note |
+| `<leader>od` | Open daily note |
+| `<leader>on` | Create new note |
+| `<leader>of` | Follow link |
+| `<leader>ob` | View backlinks |
+| `<leader>ot` | View table of contents |
 | `<C-a>` | Toggle AI chat (agentic.nvim) |
 | `<leader>xx` | Xcodebuild picker |
 | `<leader>xb` | Build Xcode project |
@@ -86,6 +93,7 @@ Roslyn requires the `Crashdummyy/mason-registry` (configured in `plugin/mason.lu
 | [mason.nvim](https://github.com/williamboman/mason.nvim) | LSP/tool installer |
 | [mini.files](https://github.com/nvim-mini/mini.files) | File explorer |
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI |
+| [obsidian.nvim](https://github.com/obsidian-nvim/obsidian.nvim) | Obsidian vault integration |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto-close brackets/quotes |
 | [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | Auto-close and rename HTML tags |
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting / parsing |
