@@ -1,3 +1,7 @@
+vim.pack.add({
+	"https://github.com/stevearc/conform.nvim",
+})
+
 vim.keymap.set("", "<leader>cf", function()
 	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "format buffer" })
@@ -5,10 +9,6 @@ end, { desc = "format buffer" })
 vim.api.nvim_create_autocmd("BufWritePre", {
 	once = true,
 	callback = function(args)
-		vim.pack.add({
-			"https://github.com/stevearc/conform.nvim",
-		})
-
 		require("conform").setup({
 			notify_on_error = false,
 			format_on_save = function(bufnr)
