@@ -4,6 +4,34 @@ vim.pack.add({
 
 require("agentic").setup({
 	provider = "claude-agent-acp",
+	hooks = {
+		on_session_update = function(data)
+			if data.update.sessionUpdate == "usage_update" then
+				if vim.api.nvim_tabpage_is_valid(data.tab_page_id) then
+					vim.t[data.tab_page_id].agentic_usage = {
+						used = data.update.used,
+						size = data.update.size,
+					}
+				end
+			end
+		end,
+	},
+	headers = {
+		chat = function(parts)
+			local usage = vim.t[vim.api.nvim_get_current_tabpage()].agentic_usage
+			local context = usage
+				and string.format("%d / %d tokens (%.0f%%%%)", usage.used, usage.size, usage.used / usage.size * 100)
+				or nil
+			local segments = { parts.title }
+			if context then
+				table.insert(segments, context)
+			end
+			if parts.suffix then
+				table.insert(segments, parts.suffix)
+			end
+			return table.concat(segments, " | ")
+		end,
+	},
 	keymaps = {
 		widget = {
 			change_mode = {
