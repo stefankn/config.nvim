@@ -21,6 +21,8 @@ require("agentic").setup({
 	},
 })
 
+vim.api.nvim_set_hl(0, "AgenticTitle", { fg = "#e08060", bg = "#242320" })
+
 vim.keymap.set("n", "<leader>at", function()
 	require("agentic").toggle()
 end, { desc = "toggle chat" })
